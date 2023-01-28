@@ -6,11 +6,11 @@ import lombok.Data;
 public class StockRequest {
     public Long id;
     public String name;
-    public Long category_id;
+    public Long categoryId;
 
-    public StockRequest(Long id, String name, Long category_id) {
+    public StockRequest(Long id, String name, Long categoryId) {
         this.id = id;
         this.name = name;
-        this.category_id = category_id;
+        this.categoryId = categoryId;
     }
 }

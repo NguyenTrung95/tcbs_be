@@ -6,10 +6,12 @@ import com.tcbs.trungnm.tcbsbe.entity.Stock;
 import java.util.List;
 
 public interface StockService {
-    List<Stock> findStockById(Long id);
-    List<Stock> findStockByCompanyName(String name);
-    List<Stock> findStockByCategoryId(Long category_id);
+    Stock findStockById(Long id);
+    List<Stock> findStockByName(String name);
+    List<Stock> findStockByCategoryName(String categoryName);
+
     Stock updateStockToCategory(StockRequest request);
-    void deleteStockToCategory(StockRequest request);
+    void deleteStockToCategory(Long id);
     Stock saveStockToCategory(StockRequest reques);
+
 }

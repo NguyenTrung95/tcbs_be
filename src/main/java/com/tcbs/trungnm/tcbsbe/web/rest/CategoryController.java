@@ -1,25 +1,26 @@
-/*package com.tcbs.trungnm.tcbsbe.web.rest;
+package com.tcbs.trungnm.tcbsbe.web.rest;
 
+import com.tcbs.trungnm.tcbsbe.dto.CategoryRequest;
 import com.tcbs.trungnm.tcbsbe.dto.StockRequest;
-import com.tcbs.trungnm.tcbsbe.entity.Stock;
-import com.tcbs.trungnm.tcbsbe.repository.CategoryRepo;
-import com.tcbs.trungnm.tcbsbe.repository.StockRepo;
+import com.tcbs.trungnm.tcbsbe.entity.Category;
 import com.tcbs.trungnm.tcbsbe.services.CategoryService;
+import com.tcbs.trungnm.tcbsbe.services.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
 @Controller
-public class CategoryController extends CommonController {
+@RequestMapping("/api/category")
+public class CategoryController {
 
-    private final CategoryService categoryService;
+    @Autowired
+    CategoryService categoryService;
 
-    @PostMapping("/category")
-    public ResponseEntity<Department> createDepartment(@RequestBody DepartmentRequest departmentRequest) {
-        Department department = departmentService.createDepartment(departmentRequest);
-        return new ResponseEntity<>(department, HttpStatus.CREATED);
+    @PostMapping("/add")
+    public Category createCategory(@RequestBody Category request) {
+        return categoryService.createCategory(request);
     }
-}*/
+}
