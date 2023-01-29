@@ -51,7 +51,7 @@ public class StockController {
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public ResponseEntity<HttpStatus> update( @RequestBody StockRequest request){
         stockService.updateStockToCategory(request);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);

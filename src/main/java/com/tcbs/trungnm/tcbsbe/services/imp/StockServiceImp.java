@@ -45,8 +45,7 @@ public class StockServiceImp implements StockService {
 
     @Override
     public Stock updateStockToCategory(StockRequest request) {
-        Stock stockFindById = stockRepo.findById(request.id)
-                .orElseThrow();
+        Stock stockFindById = stockRepo.findById(request.id).orElseThrow();
         stockFindById.setCategoryId(request.categoryId);
         stockFindById.setName(request.name);
         return stockRepo.save(stockFindById);
@@ -59,8 +58,11 @@ public class StockServiceImp implements StockService {
 
     @Override
     public Stock saveStockToCategory(StockRequest request) {
-        Stock newStock = new Stock(request.id, request.name,request.categoryId);
-        return stockRepo.save(newStock);
+        if(!stockRepo.existsById(request.getId())) {
+            Stock newStock = new Stock(request.id, request.name,request.categoryId);
+            return stockRepo.save(newStock);
+        }
+        return  null;
     }
 
 }
